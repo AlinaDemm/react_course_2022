@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { SetUserNameAction } from '../../../store/actions';
 import Button from '../../common/Button';
 import Form from '../../common/Form';
 import Input from '../../common/Form/Input';
 
 const AuthPage = () => {
-  const [email, setEmail] = useState('');
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [hasError, setHasError] = useState(false);
+
   const submitHandler = () => {
     if (password.length > 10) {
       setHasError(false);
-      console.log({ emailUser: email, password });
+      dispatch(SetUserNameAction(name));
+      console.log({ name, password });
     } else {
       setHasError(true);
       console.log('Error');
@@ -27,13 +32,7 @@ const AuthPage = () => {
 
   return (
     <Form title="Авторизация">
-      <Input
-        title="Email"
-        id="email"
-        placeholder="Введите почту"
-        value={email}
-        setValue={setEmail}
-      />
+      <Input title="Name" id="name" placeholder="Введите почту" value={name} setValue={setName} />
       <Input
         title="Password"
         id="password"

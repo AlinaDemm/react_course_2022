@@ -21,7 +21,7 @@ const App = () => {
               <h1>MAIN PAGE</h1>
             </AuthHOC>
           }
-          />
+        />
         <Route
           path="users"
           element={
@@ -29,7 +29,7 @@ const App = () => {
               <MainContainer />
             </AuthHOC>
           }
-          />
+        />
         <Route
           path="users/:name"
           element={
@@ -37,7 +37,7 @@ const App = () => {
               <OneUserContainer />
             </AuthHOC>
           }
-          />
+        />
         <Route path="auth" element={<AuthContainer />} />
         <Route path="reg" element={<RegistrationContainer />} />
         <Route path="*" element={<h1>NOT FOUND</h1>} />
